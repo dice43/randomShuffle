@@ -35,6 +35,8 @@ print(f'These are the genres to choose from: {genresAvailable}')
 
 # Input from user picking which genre they would like in the playlist
 desiredGenre = input('Please enter a specific genre that you want the playlist to have: ')
+while desiredGenre not in genresAvailable:
+    desiredGenre = input('Please enter a correct genre: ')
 print('')
 parameters = {
     'method': 'tag.gettoptracks',
