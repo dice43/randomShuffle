@@ -50,7 +50,11 @@ songs = []
 
 for tag in data['toptags']['tag']:
     genresAvailable.append(tag['name'])
-print(f'These are the genres to choose from: {genresAvailable}')
+print('These are the genres to choose from: ')
+for genre in genresAvailable:
+    print(genre + ',', end = ' ')
+print("")
+print("")
 
 # Input from user picking which genre they would like in the playlist
 desiredGenre = input('Please enter a specific genre \
@@ -83,7 +87,7 @@ else:
     to_query = True
 # Code to query the playlist for songs by a certain artist
 while to_query is True:
-    delete = input('Input "delete" to delete a song: ')
+    delete = input('Input "delete" to delete a song or "songs" to see the songs of an artist on the list: ')
     if delete.lower() == 'delete':
         song_or_art = input('Would you like to delete by song name or artist? \nInput \
 "song" for song or "artist" for artist: ')
@@ -92,6 +96,9 @@ while to_query is True:
         elif song_or_art.lower() == 'artist':
             delete_artist(input("Enter the name of \
 the artist to remove: "), df)
+    if delete.lower() == 'songs':
+        artist = input('Please enter the name of an artist: ')
+        search_artist(artist)
     if input("Continue querying? Y/N: ").upper() != 'Y':
         to_query = False
 print("This is the updated playlist: ")
